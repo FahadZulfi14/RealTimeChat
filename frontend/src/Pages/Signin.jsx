@@ -25,9 +25,14 @@ const Signin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const trimmedData = {
+      email: formData.email.trim().toLowerCase(),
+      password: formData.password.trim(),
+    };
     
     try {
-      const res = await axios.post(`${BACKEND_URL}/api/user/login`, formData, {
+      const res = await axios.post(`${BACKEND_URL}/api/user/login`, trimmedData, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer YOUR_JWT_TOKEN',

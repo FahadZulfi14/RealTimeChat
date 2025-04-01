@@ -23,8 +23,12 @@ app.use(express.urlencoded({ limit: '100mb', extended: true })); // Increase for
 const frontendUrl = process.env.FRONTEND_URL;
 
 const corsOptions = {
-origin: frontendUrl,
-credentials : true,  //ye cookie ko allow karta hai// 
+// origin: frontendUrl,
+// credentials : true,  //ye cookie ko allow karta hai// 
+origin:[frontendUrl],
+methods:['GET', 'POST'],
+Origin: frontendUrl,
+Credentials: true,
 };
 
 app.use(cors(corsOptions))

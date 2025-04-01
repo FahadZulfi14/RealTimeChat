@@ -66,8 +66,8 @@ const io = new Server(server, {
     cors:{
         origin:[frontendUrl],
         methods:['GET', 'POST'],
-        Origin: frontendUrl,
-        Credentials: true,
+        credentials: true,
+        allowedHeaders: ['Content-Type', 'Authorization']
     },
 });
 

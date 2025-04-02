@@ -54,10 +54,14 @@ import {Server} from "socket.io";
 import http from "http";
 import express from "express";
 import dotenv from 'dotenv';
+import cors from 'cors';
+
+
+
+dotenv.config();
 
 
 const app = express();
-dotenv.config({});
 
 const frontendUrl = process.env.FRONTEND_URL;
 const server = http.createServer(app);
@@ -68,8 +72,10 @@ const io = new Server(server, {
         methods: ['GET', 'POST'],
         credentials: true,  // Use lowercase 'credentials'
         allowedHeaders: ['Content-Type', 'Authorization'],
-    },
+    }
 });
+
+console.log("corsssss", cors);
 
 export const getReceiverSocketId = (receiverId) => {
     return userSocketMap[receiverId];

@@ -68,7 +68,7 @@ const io = new Server(server, {
         methods: ['GET', 'POST'],
         credentials: true,  // Use lowercase 'credentials'
         allowedHeaders: ['Content-Type', 'Authorization'],
-    },
+    },c
 });
 
 export const getReceiverSocketId = (receiverId) => {

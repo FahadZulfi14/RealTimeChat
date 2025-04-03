@@ -27,6 +27,7 @@ router.post('/register', upload.single('picture'), async (req, res) => {
     try {
         await UserJoiSchema.validateAsync(req.body);
         const picturePath = req.file?.path;
+        const picture = req.file?.fieldname;
         const { secure_url, public_id } = await uploadImageOnCloudinary(picturePath, "users");
         
         if (!secure_url) {

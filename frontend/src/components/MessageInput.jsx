@@ -52,7 +52,7 @@ const {messages} = useSelector(store => store.message);
             }
         );
        dispatch(setMessages([...messages, res?.data?.message]))
-console.log('res---------',res);
+
 
       // Clear form
       setText("");
@@ -84,41 +84,7 @@ console.log('res---------',res);
           </div>
         </div>
       )}
-{/* 
-      <form onSubmit={handleSendMessage} className="flex items-center gap-2">
-        <div className="flex-1 flex gap-2 items-center">
-          <input
-            type="text"
-            className="w-full input input-bordered rounded-lg input-sm sm:input-md bg-white text-black block"
-            placeholder="Type a message..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-          <input
-            type="file"
-            accept="image/*"
-            className="hidden" 
-            ref={fileInputRef}
-            onChange={handleImageChange}
-          />
 
-          <button
-            type="button"
-            className={`hidden sm:flex btn btn-circle
-                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <Image size={20} color="red"/>
-          </button>
-        </div>
-        <button
-          type="submit"
-          className="btn btn-sm btn-circle bg-white "
-          disabled={!text.trim() && !imagePreview}
-        >
-          <Send size={20} />
-        </button>
-      </form> */}
 
 <form onSubmit={handleSendMessage} className="flex items-center gap-2">
   <div className="flex-1 flex gap-2 items-center">

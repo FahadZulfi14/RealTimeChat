@@ -67,9 +67,9 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: [frontendUrl],  // This is sufficient
+        origin: [frontendUrl], 
         methods: ['GET', 'POST'],
-        credentials: true,  // Use lowercase 'credentials'
+        credentials: true, 
         allowedHeaders: ['Content-Type', 'Authorization'],
     }
 });

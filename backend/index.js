@@ -24,7 +24,7 @@ const frontendUrl = process.env.FRONTEND_URL;
 
 const corsOptions = {
 origin: frontendUrl,
-credentials : true,  //ye cookie ko allow karta hai// 
+credentials: true,  //ye cookie ko allow karta hai// 
 methods: ['GET', 'POST'],
 allowedHeaders: ['Content-Type', 'Authorization']
 };

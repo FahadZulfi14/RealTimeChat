@@ -70,7 +70,7 @@ const io = new Server(server, {
         origin: [frontendUrl], 
         methods: ['GET', 'POST'],
         credentials: true, 
-        allowedHeaders: ['Content-Type', 'Authorization'],
+        allowedHeaders: ['Content-Type','Authorization'],
     }
 });
 

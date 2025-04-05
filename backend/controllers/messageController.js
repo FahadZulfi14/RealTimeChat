@@ -9,6 +9,7 @@ export const sendMsg = async (req, res) => {
         const senderId = req.id;
         const receiverId = req.params.id;
         const { message, picture } = req.body;
+        
         let pictureUrl; 
         if (picture){
             const result = await cloudinary.uploader.upload(picture)
@@ -49,12 +50,11 @@ if(receiverSocketId){
 }
     
     
+return res.status(201).json({success: true, status_code: 201, result: "Message send succesfully", message: newMsg })
 
-     return res.status(201).json({success: true, status_code: 201, result: "Message send succesfully", message: newMsg })
-
-    } catch (error) {
-        res.status(400).json({ status_code: 400, message: error.message });
-    }
+} catch (error) {
+    res.status(400).json({ status_code: 400, message: error.message });
+}
 };
 
 
@@ -66,6 +66,7 @@ export const getMsg = async (req, res) => {
             participant: {$all : [senderId, receiverId]}
          }).populate("Message");
          return res.status(200).json(conversation?.Message)
+         
 
 
 

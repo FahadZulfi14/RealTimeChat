@@ -69,7 +69,7 @@
 
 
 
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Home from "./Pages/Home.jsx";
@@ -80,9 +80,10 @@ import io from "socket.io-client";
 import { setSocket } from "./redux/socketSlice.jsx";
 import { setOnlineUsers } from "./redux/userSlice.jsx";
 import { BACKEND_URL } from "./assets/config.jsx";
+import { SocketContext } from "./context/SocketContext.jsx";
 
 function App() {
-  
+  const socketContext = useContext(SocketContext);
   const { authUser } = useSelector((store) => store.user);
   const { socket } = useSelector((store) => store.socket);
   
@@ -96,7 +97,8 @@ function App() {
       });
       
 
-      dispatch(setSocket(socket));
+      // dispatch(setSocket(socket));
+      socketContext.setSocket(socket);
 
       socket?.on("getOnlineUser", (onlineUsers) => {
         dispatch(setOnlineUsers(onlineUsers));
@@ -106,7 +108,8 @@ function App() {
     } else {
       if (socket) {
         socket.close();
-        dispatch(setSocket(null));
+        // dispatch(setSocket(null));
+        socketContext.setSocket(null); // Reset socket to null
       }
     }
   }, [authUser]);

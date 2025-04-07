@@ -2,6 +2,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
+import { SocketPorvider } from './context/SocketContext.jsx';
 
 import { Toaster } from 'react-hot-toast';
 import { Provider } from 'react-redux';
@@ -16,6 +17,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
+        <SocketPorvider>
+          <App />
+        </SocketPorvider>
       <App />
       <Toaster />
       </PersistGate>
